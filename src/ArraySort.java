@@ -1,4 +1,4 @@
-public class Sort {
+public class ArraySort {
     public static int[] mergeSort(int[] arr) {
         //mergeTopDown(arr, 0, arr.length - 1);
         mergeBottomUp(arr);

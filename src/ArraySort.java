@@ -1,8 +1,9 @@
+import java.util.*;
+
 public class ArraySort {
-    public static int[] mergeSort(int[] arr) {
+    public static void mergeSort(int[] arr) {
         //mergeTopDown(arr, 0, arr.length - 1);
         mergeBottomUp(arr);
-        return arr;
     }
 
     private static void mergeTopDown(int[] arr, int l, int r) {
@@ -29,6 +30,7 @@ public class ArraySort {
     // merge arr[l .. mid] and arr[mid+1 .. r]
     private static void merge(int[] arr, int l, int mid, int r) {
         int[] tmp = new int[r -l + 1];
+        if(arr[mid] < arr[mid + 1]) return;
         for(int i = l; i <= r; i++) {
             tmp[i - l] = arr[i];
         }
@@ -48,5 +50,39 @@ public class ArraySort {
                 j++;
             }
         }
+    }
+
+    public static void quickSort(int[] arr) {
+        quick(arr, 0, arr.length - 1);
+    }
+
+    private static void quick(int[] arr, int s, int e) {
+        if(s > e) return;
+        int pivot = partition(arr, s, e);
+        quick(arr, s, pivot - 1);
+        quick(arr, pivot + 1, e);
+    }
+
+    private static int partition(int[] arr, int s, int e) {
+        Random random = new Random();
+        int rand = s + random.nextInt(e-s+1);
+        int pivot=arr[rand];
+        swap(arr, s, rand);
+        int l = s, r = e;
+        while(l < r) {
+            while(l < r && arr[r]>= pivot) r--;
+            while(l < r && arr[l] <= pivot) l++;
+            if(l < r) {
+                swap(arr, l, r);
+            }
+        }
+        swap(arr, l, s);
+        return l;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 }

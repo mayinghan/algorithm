@@ -5,8 +5,8 @@ public class Main {
         int[] arr1 = {4, 2, 5, 1, 7, 3, 5, 2};
         int[] arr2 = {9, 4, 5, 2, 3, 7, 1, 8};
 
-        ArraySort.mergeSort(arr1);
-        ArraySort.mergeSort(arr2);
+        ArraySort.quickSort(arr1);
+        ArraySort.quickSort(arr2);
 
         printArray(arr1);
         printArray(arr2);
